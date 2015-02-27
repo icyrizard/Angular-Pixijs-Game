@@ -1,0 +1,12 @@
+*.sw[a-z]
+vendor/*
+build/*
+bin/*
+node_modules/*
+CHANGELOG.md
+CONTRIBUTING.md
+LICENSE
+changelog.tpl
+tools.md
+
+
