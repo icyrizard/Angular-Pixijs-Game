@@ -8,5 +8,4 @@ CONTRIBUTING.md
 LICENSE
 changelog.tpl
 tools.md
-
-
+*.DS_Store

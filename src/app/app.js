@@ -2,6 +2,7 @@ angular.module( 'Interactive', [
     'templates-app',
     'templates-common',
     'Interactive.index',
+    'Interactive.pixi',
     'ui.router'
 ])
 

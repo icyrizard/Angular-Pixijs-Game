@@ -1,4 +1,5 @@
 angular.module('Interactive.index', [
+    'Interactive.pixi',
     'ui.router'
 ])
 
@@ -20,5 +21,3 @@ angular.module('Interactive.index', [
 })
 
 ;
-
-

@@ -18,10 +18,41 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-ng-annotate');
   grunt.loadNpmTasks('grunt-html2js');
 
+  grunt.loadNpmTasks('grunt-http-server');
   /**
    * Load in our build configuration file.
    */
   var userConfig = require( './build.config.js' );
+
+
+  var httpConfig = {
+    'http-server': {
+      'dev': {
+
+          // the server root directory
+          root: 'build/',
+
+          // the server port
+          // can also be written as a function, e.g.
+          // port: function() { return 8282; }
+          port: 8282,
+
+          // the host ip address
+          // If specified to, for example, "127.0.0.1" the server will
+          // only be available on that ip.
+          // Specify "0.0.0.0" to be available everywhere
+          host: "127.0.0.1",
+          showDir : true,
+          autoIndex: true,
+
+          // server default file extension
+          ext: "html",
+
+          // run in parallel with other tasks
+          runInBackground: false
+      }
+    }
+};
 
   /**
    * This is the configuration object Grunt uses to give each plugin its 
@@ -546,7 +577,7 @@ module.exports = function ( grunt ) {
     }
   };
 
-  grunt.initConfig( grunt.util._.extend( taskConfig, userConfig ) );
+  grunt.initConfig( grunt.util._.extend( taskConfig, userConfig, httpConfig ) );
 
   /**
    * In order to make it safe to just compile or copy *only* what was changed,
@@ -634,7 +665,7 @@ module.exports = function ( grunt ) {
    */
   grunt.registerMultiTask( 'karmaconfig', 'Process karma config templates', function () {
     var jsFiles = filterForJS( this.filesSrc );
-    
+
     grunt.file.copy( 'karma/karma-unit.tpl.js', grunt.config( 'build_dir' ) + '/karma-unit.js', { 
       process: function ( contents, path ) {
         return grunt.template.process( contents, {
