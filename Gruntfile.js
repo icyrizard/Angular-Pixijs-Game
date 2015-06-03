@@ -30,7 +30,7 @@ module.exports = function ( grunt ) {
       'dev': {
 
           // the server root directory
-          root: 'build/',
+          root: '/app/build/',
 
           // the server port
           // can also be written as a function, e.g.
@@ -53,6 +53,7 @@ module.exports = function ( grunt ) {
       }
     }
 };
+
 
   /**
    * This is the configuration object Grunt uses to give each plugin its 
