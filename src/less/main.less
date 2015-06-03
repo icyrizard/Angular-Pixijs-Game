@@ -20,6 +20,9 @@
 
 @import 'variables.less';
 
+body {
+    font-family: MyriadPro, 'Myriad Pro', Helvetica, Arial, sans-serif;
+}
 
 /**
  * Typography
@@ -121,3 +124,52 @@ h2 {
 
 /*  @import '../app/home/home.less'; */
 
+// Class
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Usage as a mixin
+.element {
+  .center-block();
+}
+
+.container {
+    padding: 0 !important;
+}
+
+.game-background {
+    background: url("/assets/bg.jpg");
+    background-position: 50% 50%;
+    background-size: auto 80%;
+    background-repeat: no-repeat;
+    padding: 0 !important;
+    height: 800px;
+
+}
+
+.popup {
+    color: #d0b745;
+    background: white;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    position: absolute;
+    padding: 3em;
+    left: 50%;
+    top: 10%;
+    transform: translateY(-50%);
+    transform: translateX(-50%);
+}
+
+.popup h1 {
+    font-weight: bold;
+}
+
+.popup button {
+    background-color: #e7d878;
+    color: white;
+    font-size: 3em;
+}

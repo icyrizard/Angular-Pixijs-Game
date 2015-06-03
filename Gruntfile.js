@@ -41,7 +41,7 @@ module.exports = function ( grunt ) {
           // If specified to, for example, "127.0.0.1" the server will
           // only be available on that ip.
           // Specify "0.0.0.0" to be available everywhere
-          host: "127.0.0.1",
+          host: "0.0.0.0",
           showDir : true,
           autoIndex: true,
 
@@ -59,6 +59,7 @@ module.exports = function ( grunt ) {
    * instructions.
    */
   var taskConfig = {
+
     /**
      * We read in our `package.json` file so we can access the package name and
      * version. It's already there, so we don't repeat ourselves here.

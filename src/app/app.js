@@ -1,9 +1,11 @@
 angular.module( 'Interactive', [
     'templates-app',
     'templates-common',
+    'ui.router',
     'Interactive.index',
     'Interactive.pixi',
-    'ui.router'
+    'Interactive.game',
+    'Interactive.game.tapdance'
 ])
 
 .config( function ( $stateProvider, $urlRouterProvider ) {
@@ -11,6 +13,7 @@ angular.module( 'Interactive', [
 })
 
 .run( function run () {
+
 })
 
 .controller( 'AppCtrl', function AppCtrl ( $scope, $location ) {
@@ -22,4 +25,3 @@ angular.module( 'Interactive', [
 })
 
 ;
-

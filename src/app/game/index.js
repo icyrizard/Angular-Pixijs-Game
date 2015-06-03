@@ -1,23 +1,24 @@
-angular.module('Interactive.index', [
+angular.module('Interactive.game', [
     'Interactive.pixi',
     'ui.router'
 ])
 
 .config(function($stateProvider) {
-    $stateProvider.state( 'index', {
-        url: '/index',
+    $stateProvider.state( 'game', {
+        url: '/game',
         views: {
             'main': {
                 controller: 'IndexCtrl',
-                templateUrl: 'index/index.tpl.html'
+                templateUrl: 'game/index.tpl.html'
             }
         },
 
-        data: { pageTitle: 'index' }
+        data: { pageTitle: 'Game' }
     });
 })
 
 .controller( 'IndexCtrl', function IndexController($scope) {
+    console.log('game-index');
 })
 
 ;
