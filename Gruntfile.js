@@ -30,7 +30,7 @@ module.exports = function ( grunt ) {
       'dev': {
 
           // the server root directory
-          root: 'build/',
+          root: '/app/build/',
 
           // the server port
           // can also be written as a function, e.g.
@@ -41,7 +41,8 @@ module.exports = function ( grunt ) {
           // If specified to, for example, "127.0.0.1" the server will
           // only be available on that ip.
           // Specify "0.0.0.0" to be available everywhere
-          host: "127.0.0.1",
+          //host: "127.0.0.1",
+          host: "0.0.0.0",
           showDir : true,
           autoIndex: true,
 
@@ -53,6 +54,7 @@ module.exports = function ( grunt ) {
       }
     }
 };
+
 
   /**
    * This is the configuration object Grunt uses to give each plugin its 
