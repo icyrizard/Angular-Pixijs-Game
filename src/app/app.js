@@ -6,7 +6,7 @@ angular.module( 'Interactive', [
     'ui.router'
 ])
 
-.config( function ( $stateProvider, $urlRouterProvider ) {
+.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise( '/index' );
 })
 
