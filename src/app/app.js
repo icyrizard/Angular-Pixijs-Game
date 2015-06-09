@@ -8,7 +8,7 @@ angular.module( 'Interactive', [
     'Interactive.game.tapdance'
 ])
 
-.config( function ( $stateProvider, $urlRouterProvider ) {
+.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise( '/index' );
 })
 
