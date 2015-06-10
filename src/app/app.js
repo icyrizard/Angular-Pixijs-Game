@@ -9,7 +9,7 @@ angular.module( 'Interactive', [
 ])
 
 .config(function ($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise( '/index' );
+    $urlRouterProvider.otherwise('/tapdance' );
 })
 
 .run( function run () {

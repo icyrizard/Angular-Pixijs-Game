@@ -1,7 +1,7 @@
 angular.module('Interactive.game.tapdance', [
     'ui.router',
     'ui.bootstrap',
-    'Interactive.pixi'
+    'Interactive.game.tapdance.how2play'
 ])
 
 .config(function($stateProvider) {
