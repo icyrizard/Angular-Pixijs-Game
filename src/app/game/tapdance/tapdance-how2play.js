@@ -1,6 +1,7 @@
 angular.module('Interactive.game.tapdance.how2play', [
     'ui.router',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'Interactive.game.tapdance.game'
 ])
 
 .config(function($stateProvider) {

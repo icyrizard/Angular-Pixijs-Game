@@ -20,11 +20,22 @@
 
 @import 'variables.less';
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family: MyriadPro, 'Myriad Pro', Helvetica, Arial, sans-serif;
     width: 100%;
     height: 100%;
     overflow:hidden;
+    text-align:center;
+}
+
+.container {
+    width: 375px;
+    margin: 0 auot;
 }
 
 
@@ -150,44 +161,70 @@ h2 {
 
 img.bg-image {
     position: absolute;
-    top: -90px;
     left: 0;
     height: 667px;
     width: auto;
-    z-index: 0;
+    z-index: -1;
 }
 
 .popup-image {
-    position: absolute;
-    width: 250px;
-    left: 20%;
+    width: 380px;
     margin-left: auto;
     margin-right: auto;
 }
 
 .popup {
+    line-height: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.5em;
+    position: relative;
+    top: 80px;
+    width: 300px;
+}
+
+
+.gold {
+    -moz-border-radius: 30px;
+    -webkit-border-radius: 30px;
+    background: #e7d878;
+    border-radius: 30px;
+    color: white;
+}
+
+.gold a.button {
+    background-color: #d0b745;
+}
+
+.button-modal {
+    margin: 3em 0em 1em 0em;
+}
+
+.popup a {
+    color: white;
+    font-size: 2em;
+}
+
+.popup a.button {
+    margin-top: 2em;
+    padding: 0.5em 2em 0.5em 2em;
+}
+
+.white {
     -moz-border-radius: 30px;
     -webkit-border-radius: 30px;
     background: white;
     border-radius: 30px;
     color: #d0b745;
-    left: 10%;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 3em;
-    position: absolute;
-    top: 40px;
-    width: 300px;
 }
 
-.popup h1 {
+.white h1 {
     font-weight: bold;
 }
 
-.popup button {
+.white .button {
     background-color: #e7d878;
     color: white;
-    font-size: 3em;
 }
 
 
@@ -195,3 +232,13 @@ img.bg-image {
 and (min-device-width : 375px)
 and (max-device-width : 667px)
 and (orientation : portrait) { /* STYLES GO HERE */ }
+
+canvas {
+}
+
+canvas.tapdance {
+    position: absolute;
+    top: 20px;
+    left: 0px;
+    z-index: 2;
+}

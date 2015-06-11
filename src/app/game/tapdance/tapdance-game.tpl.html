@@ -1,0 +1,21 @@
+<div class="game-background">
+    <img ng-show='!game' class="bg-image" src="/assets/jeans_bg.jpg" alt='bg'/>
+
+    <div ng-show='!game' class="popup gold">
+        <h1 class="text-center">TRYOUT</h1>
+        <p class="text-center">Before you start dancing</p>
+        <p class="text-center">try out how it's done</p>
+
+        <div class="button-modal button-go">
+            <a  ng-click="start_button.click($event)"
+                class="button">LET'S GO</a>
+        </div>
+    </div>
+
+    <div ng-show='game' class="game">
+        <img  class="bg-image" src="/assets/jeans_bg_white.jpg" alt='bg'/>
+
+        <canvas pixi="stage" class="tapdance" pixi-render="pixiRender"
+            pixi-transparent="true" pixi-renderer="'webgl'"></canvas>
+    </div>
+</div>
