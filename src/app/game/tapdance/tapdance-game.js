@@ -30,58 +30,76 @@ angular.module('Interactive.game.tapdance.game', [
 })
 
 .directive('pixi', function($parse, $state) {
-  return {
-    restrict: 'A',
-    scope: true,
-    controller: function($scope, $element, $attrs, $document, $window) {
-           // init the first element
-           $element = $element[0];
-           var game_div = document.getElementsByClassName('game-background')[0];
+    return {
+        restrict: 'A',
+        scope: true,
+        controller: function($scope, $element, $attrs, $document, $window) {
+            // init the first element
+            $element = $element[0];
+            var game_div = document.getElementsByClassName('game-background')[0];
 
-           var width = game_div.scrollWidth;
-           var height = 600;
+            var width = game_div.scrollWidth;
+            var height = 660;
 
-           console.log(width, height);
+            console.log(width, height);
 
-           // TODO: set color from options
-           var stage = new PIXI.Stage();
+            // TODO: set color from options
+            var stage = new PIXI.Stage();
 
-           // create the root of the scene graph
-           var renderer = PIXI.autoDetectRenderer(width, height,
-                                                  {view: $element,
-                                                   transparent: true});
+            // create the root of the scene graph
+            var renderer = PIXI.autoDetectRenderer(width, height,
+                                                    {view: $element,
+                                                    transparent: true});
 
-           var jeans = PIXI.Sprite.fromImage('/assets/jeans_plane.png');
-           var bg = PIXI.Sprite.fromImage('/assets/jeans_cutout.png');
-           var water = PIXI.Sprite.fromImage('/assets/water.png');
+            var bg_white = PIXI.Sprite.fromImage('/assets/jeans_bg_white.png');
+            var jeans = PIXI.Sprite.fromImage('/assets/jeans_plane.png');
+            var bg = PIXI.Sprite.fromImage('/assets/jeans_cutout.png');
+            var water = PIXI.Sprite.fromImage('/assets/water.png');
+            var loader = PIXI.Sprite.fromImage('/assets/loader.png');
 
-           bg.width = renderer.width;
-           bg.height = renderer.height;
-           jeans.width = renderer.width;
-           jeans.height = renderer.height;
-           water.width = renderer.width;
-           water.height = renderer.height;
+            bg_white.width = renderer.width;
+            bg_white.height = renderer.height;
 
-           stage.addChild(jeans);
-           stage.addChild(water);
-           stage.addChild(bg);
+            bg.width = renderer.width;
+            bg.height = renderer.height;
 
-           animate();
+            jeans.width = renderer.width;
+            jeans.height = renderer.height;
 
-           function animate() {
-               renderer.render(stage);
-               requestAnimFrame(animate);
+            water.width = renderer.width;
+            water.height = renderer.height;
 
-               if ($scope.game) {
+            loader.y = 0;
+            loader.x = 0;
+            loader.height = 24;
+
+            stage.addChild(bg_white);
+            stage.addChild(jeans);
+
+            stage.addChild(water);
+            stage.addChild(bg);
+
+            stage.addChild(bg_white);
+            stage.addChild(loader);
+
+            animate();
+
+            function animate() {
+                renderer.render(stage);
+                requestAnimFrame(animate);
+
+                if ($scope.game) {
                     water.position.y += 1;
-                    if (water.position.y > 500) {
+                    loader.position.x += 0.5;
+
+                    if (water.position.y > 520) {
                         $scope.$apply(function() {
                             $scope.game = false;
                             $state.go('game-tapdance-result');
                         });
                     }
-               }
-           }
+                }
+            }
         }
     };
 })
