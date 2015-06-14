@@ -20,6 +20,8 @@
 
 @import 'variables.less';
 
+@container-width: 320px;
+
 * {
     margin: 0;
     padding: 0;
@@ -34,8 +36,9 @@ body {
 }
 
 .container {
-    width: 375px;
-    margin: 0 auot;
+    width: @container-width;
+    margin: 0 auto;
+    padding: 0 !important;
 }
 
 
@@ -152,7 +155,6 @@ h2 {
 }
 
 .container {
-    padding: 0 !important;
 }
 
 .game-background {
@@ -162,27 +164,31 @@ h2 {
 img.bg-image {
     position: absolute;
     left: 0;
-    height: 667px;
-    width: auto;
+    width: 320px;
     z-index: -1;
 }
 
 .popup-image {
-    width: 380px;
+    width: @container-width;
     margin-left: auto;
     margin-right: auto;
 }
 
 .popup {
-    line-height: 0.5em;
     margin-left: auto;
+    padding: 0.5em 1em 0.5em 1em;
+    line-height: 1em;
     margin-right: auto;
-    padding: 1.5em;
     position: relative;
     top: 80px;
-    width: 300px;
+    width: 250px;
 }
 
+
+.popup a {
+    color: white;
+    font-size: 2.0em;
+}
 
 .gold {
     -moz-border-radius: 30px;
@@ -197,17 +203,13 @@ img.bg-image {
 }
 
 .button-modal {
-    margin: 3em 0em 1em 0em;
-}
-
-.popup a {
-    color: white;
-    font-size: 2em;
+    margin: 3em 0em 1.6em 0em;
 }
 
 .popup a.button {
     margin-top: 2em;
-    padding: 0.5em 2em 0.5em 2em;
+    margin-bottom: 2em;
+    padding: 0.3em 1em 0.3em 1em;
 }
 
 .white {

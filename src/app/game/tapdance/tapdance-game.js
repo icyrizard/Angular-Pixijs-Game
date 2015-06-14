@@ -20,89 +20,140 @@ angular.module('Interactive.game.tapdance.game', [
     );
 })
 
-.controller( 'gameCtrl', function IndexController($scope) {
+.controller( 'gameCtrl', function IndexController($scope, game) {
     $scope.start_button = {};
+
     $scope.game = false;
+    $scope.trial = false;
+    $scope.play = false;
+
+    // show trail screen if not played yet.
+    if (game.played === 0) {
+        $scope.trial = true;
+    } else if(game.played === 1) {
+        $scope.trial = false;
+        $scope.play = true;
+    }
 
     $scope.start_button.click = function(event) {
         $scope.game = true;
+        $scope.trial = false;
+        $scope.play = false;
+        $scope.start_time = Date.now();
     };
 })
 
-.directive('pixi', function($parse, $state) {
+.directive('pixi', function($parse, $state, game) {
     return {
         restrict: 'A',
         scope: true,
         controller: function($scope, $element, $attrs, $document, $window) {
-            // init the first element
-            $element = $element[0];
-            var game_div = document.getElementsByClassName('game-background')[0];
+            var stage = new PIXI.Container();
+            var graphics = new PIXI.Graphics();
 
-            var width = game_div.scrollWidth;
-            var height = 660;
+            var stage_objects = {
+                bg_white: PIXI.Sprite.fromImage('/assets/jeans_bg_white.png'),
+                jeans: PIXI.Sprite.fromImage('/assets/jeans_plane.png'),
+                bg: PIXI.Sprite.fromImage('/assets/jeans_cutout.png'),
+                water: PIXI.Sprite.fromImage('/assets/water.png'),
+                loader: PIXI.Sprite.fromImage('/assets/loader.png')
+            };
 
-            console.log(width, height);
+            var init = function(stage, width, height, stage_objects) {
+                // create the root of the scene graph
+                var renderer = PIXI.autoDetectRenderer(width, height,
+                                    {view: $element, transparent: true});
 
-            // TODO: set color from options
-            var stage = new PIXI.Stage();
+                for (var key in stage_objects ) {
+                    stage_objects[key].width = renderer.width;
+                    stage_objects[key].height = renderer.height;
+                }
 
-            // create the root of the scene graph
-            var renderer = PIXI.autoDetectRenderer(width, height,
-                                                    {view: $element,
-                                                    transparent: true});
+                stage_objects.loader.y = 0;
+                stage_objects.loader.x = 0;
+                stage_objects.loader.height = 21;
+                stage_objects.water.y = renderer.height / 2;
 
-            var bg_white = PIXI.Sprite.fromImage('/assets/jeans_bg_white.png');
-            var jeans = PIXI.Sprite.fromImage('/assets/jeans_plane.png');
-            var bg = PIXI.Sprite.fromImage('/assets/jeans_cutout.png');
-            var water = PIXI.Sprite.fromImage('/assets/water.png');
-            var loader = PIXI.Sprite.fromImage('/assets/loader.png');
+                stage.addChild(stage_objects.bg_white);
+                stage.addChild(stage_objects.jeans);
 
-            bg_white.width = renderer.width;
-            bg_white.height = renderer.height;
+                stage.addChild(stage_objects.water);
+                stage_objects.bg.interactive = true;
 
-            bg.width = renderer.width;
-            bg.height = renderer.height;
+                stage.addChild(stage_objects.bg);
 
-            jeans.width = renderer.width;
-            jeans.height = renderer.height;
+                stage.addChild(stage_objects.bg_white);
+                stage.addChild(stage_objects.loader);
 
-            water.width = renderer.width;
-            water.height = renderer.height;
+                return renderer;
+            };
 
-            loader.y = 0;
-            loader.x = 0;
-            loader.height = 24;
-
-            stage.addChild(bg_white);
-            stage.addChild(jeans);
-
-            stage.addChild(water);
-            stage.addChild(bg);
-
-            stage.addChild(bg_white);
-            stage.addChild(loader);
-
-            animate();
-
-            function animate() {
-                renderer.render(stage);
-                requestAnimFrame(animate);
-
+            var animate = function()  {
                 if ($scope.game) {
-                    water.position.y += 1;
-                    loader.position.x += 0.5;
+                    stage_objects.water.position.y -= 1;
+                    stage_objects.loader.position.x += 0.55;
 
-                    if (water.position.y > 520) {
-                        $scope.$apply(function() {
-                            $scope.game = false;
+                    if((Date.now() - $scope.start_time) > 10000 ) {
+                        $scope.game = false;
+                        $scope.$apply();
+
+                        if (game.played === 0) {
+                            game.played += 1;
+
+                            setTimeout(function(){
+                                $state.go($state.current, {}, { reload: true
+                                });
+                            }, 10);
+                        } else {
                             $state.go('game-tapdance-result');
-                        });
+                        }
                     }
                 }
-            }
+
+                renderer.render(stage);
+                setTimeout(function(){ requestAnimationFrame(animate); }, 10);
+
+            };
+
+            $element = $element[0];
+            var game_div = document.getElementsByClassName('container')[0];
+
+            var width = game_div.scrollWidth;
+            var height = 569;
+
+            renderer = init(stage, width, height, stage_objects);
+            graphics.beginFill();
+
+            // set the line style to have a width of 5 and set the color to red
+            graphics.fillAlpha = 0;
+
+            // draw a rectangle
+            graphics.drawRect(35, height - 150, 250, 100);
+            graphics.interactive = true;
+
+            var buttonsClick = function(event) {
+                var inc = stage_objects.water.position <= 0 ? 0 : 5;
+                stage_objects.water.position.y += inc;
+                game.clicks += 1;
+            };
+
+            graphics.on('mousedown', buttonsClick);
+            graphics.on('touchstart', buttonsClick);
+
+            stage.addChild(graphics);
+
+            animate();
         }
     };
 })
+
+.factory('game', function() {
+    return {
+        played: 0,
+        clicks: 0
+    };
+})
+
 ;
         //var init = function(rendererType, transparent, antialias, element) {
         //    if (!stage) {

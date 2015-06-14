@@ -1,6 +1,7 @@
 angular.module('Interactive.game.tapdance.result', [
     'ui.router',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'Interactive.game.tapdance.game'
 ])
 
 .config(function($stateProvider) {
@@ -19,6 +20,6 @@ angular.module('Interactive.game.tapdance.result', [
     );
 })
 
-.controller( 'resultCtrl', function IndexController($scope) {
-
+.controller( 'resultCtrl', function IndexController($scope, game) {
+    console.log(game.clicks);
 });
