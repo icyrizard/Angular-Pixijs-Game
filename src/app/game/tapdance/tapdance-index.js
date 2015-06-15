@@ -21,7 +21,6 @@ angular.module('Interactive.game.tapdance', [
 })
 
 .controller( 'tapdanceCtrl', function IndexController($scope, $modal) {
-    console.log('tapdance_ctrl');
     //$modal.open(
     //    {
     //        templateUrl:'game/tapdance/tapdance-play-modal.tpl.html'

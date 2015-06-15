@@ -172,6 +172,7 @@ img.bg-image {
     width: @container-width;
     margin-left: auto;
     margin-right: auto;
+    z-index: 0;
 }
 
 .popup {
@@ -195,6 +196,7 @@ img.bg-image {
     -webkit-border-radius: 30px;
     background: #e7d878;
     border-radius: 30px;
+
     color: white;
 }
 
@@ -210,6 +212,50 @@ img.bg-image {
     margin-top: 2em;
     margin-bottom: 2em;
     padding: 0.3em 1em 0.3em 1em;
+}
+
+.popup-info {
+    margin-left: auto;
+    margin-right: auto;
+    width: 250px;
+    padding: 1em 1em 0.3em 1em;
+}
+
+.popup-info-content {
+    border-radius: 30px;
+    color: white;
+    background: #e7d878;
+    -webkit-border-bottom-right-radius: 30px;
+    -webkit-border-bottom-left-radius: 30px;
+    -moz-border-radius-bottomright: 30px;
+    -moz-border-radius-bottomleft: 30px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    width: 250px;
+    position: relative;
+    top: 80px;
+    margin: 0;
+}
+
+.popup-info-header h1 {
+    background-color: #d0b745;
+    color: white;
+    font-size: 1.9em;
+    font-weight: 900;
+    line-height: 1em;
+
+    position: relative;
+    padding: 1em 1em 0.3em 1em;
+    top: 80px;
+    width: 250px;
+
+    -webkit-border-top-left-radius: 30px;
+    -webkit-border-top-right-radius: 30px;
+    -moz-border-radius-topleft: 30px;
+    -moz-border-radius-topright: 30px;
+
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
 }
 
 .white {
@@ -229,17 +275,32 @@ img.bg-image {
     color: white;
 }
 
-
 @media only screen
 and (min-device-width : 375px)
 and (max-device-width : 667px)
 and (orientation : portrait) { /* STYLES GO HERE */ }
 
 canvas {
+
 }
 
 canvas.tapdance {
     position: absolute;
     left: 0px;
     z-index: 2;
+}
+
+.points {
+    color: white;
+    top: 180px;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    width: @container-width;
+    font-size: 2em;
+    font-weight: 100;
+}
+
+span.number {
+    font-weight: 900;
 }

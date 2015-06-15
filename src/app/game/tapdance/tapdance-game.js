@@ -72,7 +72,7 @@ angular.module('Interactive.game.tapdance.game', [
                 stage_objects.loader.y = 0;
                 stage_objects.loader.x = 0;
                 stage_objects.loader.height = 21;
-                stage_objects.water.y = renderer.height / 2;
+                //stage_objects.water.y = renderer.height / 2;
 
                 stage.addChild(stage_objects.bg_white);
                 stage.addChild(stage_objects.jeans);
@@ -90,7 +90,7 @@ angular.module('Interactive.game.tapdance.game', [
 
             var animate = function()  {
                 if ($scope.game) {
-                    stage_objects.water.position.y -= 1;
+                    stage_objects.water.position.y -= 0.2;
                     stage_objects.loader.position.x += 0.55;
 
                     if((Date.now() - $scope.start_time) > 10000 ) {
@@ -134,7 +134,7 @@ angular.module('Interactive.game.tapdance.game', [
             var buttonsClick = function(event) {
                 var inc = stage_objects.water.position <= 0 ? 0 : 5;
                 stage_objects.water.position.y += inc;
-                game.clicks += 1;
+                game.clicks += 2;
             };
 
             graphics.on('mousedown', buttonsClick);
