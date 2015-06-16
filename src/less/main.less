@@ -176,10 +176,10 @@ img.bg-image {
 }
 
 .popup {
-    margin-left: auto;
-    padding: 0.5em 1em 0.5em 1em;
     line-height: 1em;
+    margin-left: auto;
     margin-right: auto;
+    padding: 0.5em 1em 0.5em 1em;
     position: relative;
     top: 80px;
     width: 250px;
@@ -217,24 +217,18 @@ img.bg-image {
 .popup-info {
     margin-left: auto;
     margin-right: auto;
-    width: 250px;
     padding: 1em 1em 0.3em 1em;
+    top: 55px;
+    position: relative;
+    width: @container-width - 20px;
 }
 
-.popup-info-content {
-    border-radius: 30px;
+.popup-info a.button {
+    background-color: #d0b745;
+    padding: 0.3em 1em 0.3em 1em;
     color: white;
-    background: #e7d878;
-    -webkit-border-bottom-right-radius: 30px;
-    -webkit-border-bottom-left-radius: 30px;
-    -moz-border-radius-bottomright: 30px;
-    -moz-border-radius-bottomleft: 30px;
-    border-bottom-right-radius: 30px;
-    border-bottom-left-radius: 30px;
-    width: 250px;
-    position: relative;
-    top: 80px;
-    margin: 0;
+    font-size: 2.0em;
+    font-weight: 600;
 }
 
 .popup-info-header h1 {
@@ -243,11 +237,9 @@ img.bg-image {
     font-size: 1.9em;
     font-weight: 900;
     line-height: 1em;
+    margin: 0;
 
-    position: relative;
-    padding: 1em 1em 0.3em 1em;
-    top: 80px;
-    width: 250px;
+    padding: 0.8em 0.2em 0.2em 0.2em;
 
     -webkit-border-top-left-radius: 30px;
     -webkit-border-top-right-radius: 30px;
@@ -257,6 +249,21 @@ img.bg-image {
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
 }
+
+.popup-info-content {
+    color: white;
+    background: #e7d878;
+    -webkit-border-bottom-right-radius: 30px;
+    -webkit-border-bottom-left-radius: 30px;
+    -moz-border-radius-bottomright: 30px;
+    -moz-border-radius-bottomleft: 30px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    padding: 1em;
+    font-size: 1.1em;
+}
+
+
 
 .white {
     -moz-border-radius: 30px;

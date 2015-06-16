@@ -20,5 +20,15 @@ angular.module('Interactive.game.tapdance.info', [
 })
 
 .controller( 'infoCtrl', function IndexController($scope, game) {
+    $scope.info_popup = {};
+    $scope.show_info = true;
 
+    $scope.info_popup.click = function(event) {
+        $scope.show_info = false;
+        $scope.show_bg = true;
+        setTimeout(function() {
+            $scope.show_bye = true;
+            $scope.$apply();
+        }, 3000);
+    };
 });

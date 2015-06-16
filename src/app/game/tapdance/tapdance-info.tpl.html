@@ -1,13 +1,30 @@
 <div class="game-background">
-    <img class="bg-image" src="/assets/bg_better.jpg" alt='bg'/>
-    <div class="popup-info">
+    <img ng-show="show_info" class="bg-image" src="/assets/bg_better_dark.jpg" alt='bg'/>
+    <div ng-show="show_info" ng-click="info_popup.click($event)" class="popup-info" >
         <div class="popup-info-header">
             <h1 >DID YOU KNOW</h1>
         </div>
         <div class="popup-info-content">
             <p>In 2014 H&M launched its first Conscious Denim collection that
             on average uses 56% less water and 58% less engery than comparable
-            denim.</p>
+            denim.
+            </p>
+        </div>
+    </div>
+    <img ng-show="show_bg" class="bg-image" src="/assets/bg_better.jpg" alt='bg'/>
+    <div ng-show="show_bye" ng-click="bye_button.click($event)" class="popup-info" >
+        <div class="popup-info-header">
+            <h1>SEE YOU LATER</h1>
+        </div>
+        <div class="popup-info-content">
+            <p> You helped your conscience and it now lives in a greener
+            environment.Tomorrow you will have anotherchance to improve it even
+            more and get a happier conscience.
+            </p>
+
+            <div class="">
+                <a class="button">BYE BYE</a>
+            </div>
         </div>
     </div>
 </div>
