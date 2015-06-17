@@ -26,6 +26,7 @@ angular.module('Interactive.game.tapdance.info', [
     $scope.info_popup.click = function(event) {
         $scope.show_info = false;
         $scope.show_bg = true;
+
         setTimeout(function() {
             $scope.show_bye = true;
             $scope.$apply();

@@ -50,6 +50,10 @@ angular.module('Interactive.game.tapdance.game', [
         controller: function($scope, $element, $attrs, $document, $window) {
             var stage = new PIXI.Container();
             var graphics = new PIXI.Graphics();
+            var runtime = game.played === 0 ? 5000 : 10000;
+            var loader_speed = game.played === 0 ? 0.9 : 0.45;
+
+            game.clicks = 0;
 
             var stage_objects = {
                 bg_white: PIXI.Sprite.fromImage('/assets/jeans_bg_white.png'),
@@ -71,7 +75,7 @@ angular.module('Interactive.game.tapdance.game', [
 
                 stage_objects.loader.y = 0;
                 stage_objects.loader.x = 0;
-                stage_objects.loader.height = 21;
+                stage_objects.loader.height = 17;
                 //stage_objects.water.y = renderer.height / 2;
 
                 stage.addChild(stage_objects.bg_white);
@@ -88,12 +92,17 @@ angular.module('Interactive.game.tapdance.game', [
                 return renderer;
             };
 
+
             var animate = function()  {
                 if ($scope.game) {
-                    stage_objects.water.position.y -= 0.2;
-                    stage_objects.loader.position.x += 0.55;
+                    // dont move it too far
+                    if (stage_objects.water.position.y >= -50) {
+                        stage_objects.water.position.y -= 0.2;
+                    }
 
-                    if((Date.now() - $scope.start_time) > 10000 ) {
+                    stage_objects.loader.position.x -= loader_speed;
+
+                        if((Date.now() - $scope.start_time) > runtime) {
                         $scope.game = false;
                         $scope.$apply();
 
@@ -116,10 +125,10 @@ angular.module('Interactive.game.tapdance.game', [
             };
 
             $element = $element[0];
-            var game_div = document.getElementsByClassName('container')[0];
 
-            var width = game_div.scrollWidth;
-            var height = 569;
+            var game_div = document.getElementsByClassName('container')[0];
+            var width = 260;
+            var height = 462;
 
             renderer = init(stage, width, height, stage_objects);
             graphics.beginFill();
@@ -132,14 +141,13 @@ angular.module('Interactive.game.tapdance.game', [
             graphics.interactive = true;
 
             var buttonsClick = function(event) {
-                var inc = stage_objects.water.position <= 0 ? 0 : 5;
+                var inc = stage_objects.water.position <= 0 ? 0 : 3;
                 stage_objects.water.position.y += inc;
-                game.clicks += 2;
+                game.clicks += 1;
             };
 
             graphics.on('mousedown', buttonsClick);
             graphics.on('touchstart', buttonsClick);
-
             stage.addChild(graphics);
 
             animate();

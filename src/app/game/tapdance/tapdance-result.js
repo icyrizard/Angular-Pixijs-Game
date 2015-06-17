@@ -21,9 +21,28 @@ angular.module('Interactive.game.tapdance.result', [
     );
 })
 
-.controller( 'resultCtrl', function IndexController($scope, game) {
+.controller( 'resultCtrl', function IndexController($scope, game, $state) {
+    var transition_time = Date.now();
+    $scope.result_popup = {};
+
+    var result_info = {
+        0: "",
+        3: "You didn't use that much water in the production of your jeans, which saved some natural resources.",
+        5: "You didn't use a lot of water in the production of your jeans, which saved some natural resources.",
+        7: "You almost didn't use any water in the production of your jeans, which saved a lot of natural resources.",
+        10: "You didn't use any water in the production of your jeans, which saved a lot of natural resources."
+    };
+
+
+    $scope.result_popup.click = function(event) {
+        // may only transition after 3seconds
+        if ((Date.now() - transition_time) > 3000) {
+            $state.go('game-tapdance-info');
+        }
+    };
+
     var points = [0, 3, 5, 7, 10];
-    var max_clicks = 600;
+    var max_clicks = 160;
     var clicks = game.clicks;
 
     // cap it to max clicks
@@ -31,10 +50,9 @@ angular.module('Interactive.game.tapdance.result', [
 
     var ratio = points.length / (max_clicks / calc_clicks);
     var result = points[Math.ceil(ratio) - 1];
-
-    console.log(clicks);
-    console.log(ratio);
+    result = 3;
 
     $scope.points = result;
     $scope.clicks = clicks;
+    $scope.result_info = result_info[result];
 });

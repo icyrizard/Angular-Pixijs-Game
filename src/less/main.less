@@ -20,7 +20,12 @@
 
 @import 'variables.less';
 
-@container-width: 320px;
+@container-width: 260px;
+@popup-width: @container-width - 20px;
+
+p {
+    margin: 0 !important;
+}
 
 * {
     margin: 0;
@@ -83,56 +88,6 @@ h2 {
   color: #666;
 }
 
-
-/**
- * Navigation
- */
-
-.navbar {
-  margin-top: 20px;
-  
-  small {
-    font-size: 60%;
-  }
-}
-
-
-/**
- * Footer
- */
-
-.footer {
-  margin-top: 80px;
-
-  .footer-inner {
-    padding: 40px 0;
-    border-top: 1px solid #DDD;
-  }
-
-  .social {
-    float: right;
-    margin: 0;
-    list-style: none;
-
-    li {
-      float: left;
-      margin-left: 20px;
-
-      a, a:visited {
-        color: @gray-light;
-        text-decoration: none;
-        font-size: 40px;
-        .transition( 250ms ease-in-out );
-
-        &:hover {
-          color: @gray;
-        }
-      }
-    }
-  }
-}
-
-
 /**
  * Now that all app-wide styles have been applied, we can load the styles for
  * all the submodules and components we are using. 
@@ -155,6 +110,7 @@ h2 {
 }
 
 .container {
+
 }
 
 .game-background {
@@ -164,7 +120,7 @@ h2 {
 img.bg-image {
     position: absolute;
     left: 0;
-    width: 320px;
+    width: @container-width;
     z-index: -1;
 }
 
@@ -182,7 +138,7 @@ img.bg-image {
     padding: 0.5em 1em 0.5em 1em;
     position: relative;
     top: 80px;
-    width: 250px;
+    width: @popup-width
 }
 
 
@@ -191,13 +147,22 @@ img.bg-image {
     font-size: 2.0em;
 }
 
-.gold {
-    -moz-border-radius: 30px;
-    -webkit-border-radius: 30px;
-    background: #e7d878;
-    border-radius: 30px;
+.popup p {
+    font-weight: 500;
+}
 
+
+.gold {
+    -webkit-border-top-left-radius: 20px;
+    -webkit-border-top-right-radius: 20px;
+    -moz-border-radius-topleft: 20px;
+    -moz-border-radius-topright: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-radius: 20px;
+    background: #e7d878;
     color: white;
+    padding: 1em;
 }
 
 .gold a.button {
@@ -205,20 +170,41 @@ img.bg-image {
 }
 
 .button-modal {
-    margin: 3em 0em 1.6em 0em;
+    margin: 1.8em 0em 1em 0em;
 }
 
 .popup a.button {
     margin-top: 2em;
     margin-bottom: 2em;
-    padding: 0.3em 1em 0.3em 1em;
+    padding: 0.4em 1em 0.3em 1em;
+    color: white;
+    font-weight: 600;
+}
+
+.popup-image-content {
+    top: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    left: 13%;
+}
+
+.popup-image-content p {
+    color: white;
+    margin-top: 1.3em;
+    width: 191px;
+    position: relative;
+    font-family: Helvetica;
+    font-size: 1em;
+    font-weight: 600;
+    line-height: 1.3em;
 }
 
 .popup-info {
     margin-left: auto;
     margin-right: auto;
     padding: 1em 1em 0.3em 1em;
-    top: 55px;
+    top: 40px;
     position: relative;
     width: @container-width - 20px;
 }
@@ -231,55 +217,91 @@ img.bg-image {
     font-weight: 600;
 }
 
+.see-later {
+    top: 25px;
+}
+
+.see-later .popup-info-header h1 {
+    font-size: 1.7em;
+}
+
+.see-later .popup-info-content {
+    font-size: 0.9em;
+    padding-bottom: 1em;
+}
+
+.see-later .popup-info-content p {
+    padding-bottom: 0.5em;
+}
+
+
 .popup-info-header h1 {
     background-color: #d0b745;
     color: white;
-    font-size: 1.9em;
+    font-size: 1.8em;
     font-weight: 900;
     line-height: 1em;
     margin: 0;
+    padding: 0.8em 0.2em 0.5em 0.2em;
 
-    padding: 0.8em 0.2em 0.2em 0.2em;
+    -webkit-border-top-left-radius: 20px;
+    -webkit-border-top-right-radius: 20px;
+    -moz-border-radius-topleft: 20px;
+    -moz-border-radius-topright: 20px;
 
-    -webkit-border-top-left-radius: 30px;
-    -webkit-border-top-right-radius: 30px;
-    -moz-border-radius-topleft: 30px;
-    -moz-border-radius-topright: 30px;
-
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 
 .popup-info-content {
-    color: white;
+    -moz-border-radius-bottomleft: 20px;
+    -moz-border-radius-bottomright: 20px;
+    -webkit-border-bottom-left-radius: 20px;
+    -webkit-border-bottom-right-radius: 20px;
+
     background: #e7d878;
-    -webkit-border-bottom-right-radius: 30px;
-    -webkit-border-bottom-left-radius: 30px;
-    -moz-border-radius-bottomright: 30px;
-    -moz-border-radius-bottomleft: 30px;
-    border-bottom-right-radius: 30px;
-    border-bottom-left-radius: 30px;
-    padding: 1em;
-    font-size: 1.1em;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    color: white;
+    font-size: 1em;
+    font-weight: 600;
+    line-height: 1.2em;
+
+    padding: 1em 1em 1.2em 1em;
 }
-
-
 
 .white {
-    -moz-border-radius: 30px;
-    -webkit-border-radius: 30px;
+    -webkit-border-bottom-right-radius: 20px;
+    -webkit-border-bottom-left-radius: 20px;
+    -moz-border-radius-bottomright: 20px;
+    -moz-border-radius-bottomleft: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-radius: 20px;
     background: white;
-    border-radius: 30px;
     color: #d0b745;
+    padding: 1em;
 }
 
-.white h1 {
-    font-weight: bold;
+.popup-content {
+    padding: 0.5em;
+}
+
+.popup-content p {
+    line-height: 1.3em;
+}
+
+.white h1, .popup h1 {
+    font-weight: 600;
+    margin-bottom: 0;
+    margin-top: 0.2em;
+    font-size: 2em;
 }
 
 .white .button {
     background-color: #e7d878;
     color: white;
+    font-weight: 600;
 }
 
 @media only screen
@@ -297,17 +319,17 @@ canvas.tapdance {
     z-index: 2;
 }
 
+
 .points {
     color: white;
-    top: 180px;
-    margin-left: auto;
-    margin-right: auto;
-    position: absolute;
-    width: @container-width;
-    font-size: 2em;
-    font-weight: 100;
+    font-size: 1.3em;
+    font-weight: 500;
+    margin-top: 0.5em;
+    margin-bottom: 1.5em;
+
 }
 
 span.number {
     font-weight: 900;
+    font-size: 1.2em;
 }

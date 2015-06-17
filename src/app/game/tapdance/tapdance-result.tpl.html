@@ -1,8 +1,10 @@
 <div class="game-background">
     <img class="bg-image" src="/assets/bg_tapdance_plain.jpg" alt='bg'/>
-    <div>
-        <h1 class="points">+<span class="number">{{points}}</span> points</span></h1>
-        <a ui-sref="game-tapdance-info"><img class="popup-image" src="/assets/result_overlay.png" alt='bg'/></a>
-        <h1 class="">+<span class="number">{{clicks}}</span></span></h1>
+    <a ng-click="result_popup.click($event)">
+        <img class="popup-image" src="/assets/result_overlay.png" alt='bg'/>
+    </a>
+    <div class="popup-image-content">
+        <h1 class="points">+ <span class="number">{{points}}</span> POINTS</span></h1>
+        <p>{{result_info}} </p>
     <div>
 </div>
