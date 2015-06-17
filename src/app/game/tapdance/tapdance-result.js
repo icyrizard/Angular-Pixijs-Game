@@ -54,4 +54,7 @@ angular.module('Interactive.game.tapdance.result', [
     $scope.points = result;
     $scope.clicks = clicks;
     $scope.result_info = result_info[result];
+
+    game.played = 0;
+    game.clicks = 0;
 });
