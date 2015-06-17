@@ -50,7 +50,6 @@ angular.module('Interactive.game.tapdance.result', [
 
     var ratio = points.length / (max_clicks / calc_clicks);
     var result = points[Math.ceil(ratio) - 1];
-    result = 3;
 
     $scope.points = result;
     $scope.clicks = clicks;
