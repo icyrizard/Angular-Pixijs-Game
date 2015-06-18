@@ -13,7 +13,7 @@ run:
 	docker run --rm -ti -p 8282:80 -v $(DIR)/src/:/app/src/ pixi-game
 
 deploy:
-	docker run --rm -ti -v $(DEPLOY_PATH):/app/bin/ pixi-game ./etc/deploy.sh
+	docker run --rm -ti -v $(DEPLOY_PATH):/app/build/ pixi-game grunt watch
 
 # inside docker
 install:
